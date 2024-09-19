@@ -19,17 +19,23 @@ def check_answer(answers):
     return score
 
 def new_game():
-    answers = []
-    question_index = 0
-    for question in questions:
-        print("-------------------------------------------")
-        print(question)
-        for option in options[question_index]:
-            print(option)
-        answer = (input("A, B, C, or D? ")).upper()
-        answers.append(answer)
-        question_index += 1
-    score = check_answer(answers)
-    print("Final score: " + str(score) + "/" + str(len(questions)))
+    while True:
+        answers = []
+        question_index = 0
+        for question in questions:
+            print("-------------------------------------------")
+            print(question)
+            for option in options[question_index]:
+                print(option)
+            answer = (input("A, B, C, or D? ")).upper()
+            answers.append(answer)
+            question_index += 1
+        score = check_answer(answers)
+        print("Final score: " + str(score) + "/" + str(len(questions)))
+
+        response = (input("Do you want to play again Yes/No? ")).lower()
+        if response == 'no':
+            print("Thank you for playing")
+            break
 
 new_game()
